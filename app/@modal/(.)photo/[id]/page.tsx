@@ -2,6 +2,14 @@
 import PictureModal from "@/app/components/pictureModal/page";
 import Image from "next/image";
 
+export function generateStaticParams() {
+  return [
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
+  ]
+}
+
 export default async function PhotoModalPage({ params }: { params: { id: string } }) {
   const { id } = await params;
   
