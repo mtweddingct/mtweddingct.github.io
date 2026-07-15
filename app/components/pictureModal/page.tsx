@@ -14,7 +14,6 @@ export default function PictureModal({ children }: { children: React.ReactNode }
   return (
     <Dialog open onOpenChange={handleOpenChange}>
       <DialogContent className="max-w-4xl p-0 overflow-hidden bg-transparent border-none">
-        {/* Hidden titles for accessibility */}
         <DialogTitle className="sr-only">Photo Preview</DialogTitle>
         <DialogDescription className="sr-only">Detailed view of the selected photo</DialogDescription>
         {children}

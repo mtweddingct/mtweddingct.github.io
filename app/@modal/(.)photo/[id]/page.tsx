@@ -7,11 +7,13 @@ export default async function PhotoModalPage({ params }: { params: { id: string 
   
   return (
     <PictureModal>
-      <div className="relative aspect-square w-full">
+      <div className="relative w-full h-[70vh]">
         <Image
-          src={`/images/${id}.jpg`} // Replace with your actual data fetching
+          src={`/images/${id}.jpg`}
           alt={`Photo ${id}`}
           fill
+          sizes="(max-width: 896px) 100vw, 896px"
+          preload
           className="object-contain"
         />
       </div>
