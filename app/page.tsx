@@ -1,8 +1,9 @@
 // app/page.tsx
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
+import PictureModal from "@/app/components/pictureModal/page";
 
 const PASTEL_RINGS = [
   "ring-pastel-pink",
@@ -14,6 +15,7 @@ const PASTEL_RINGS = [
 
 export default function GalleryPage() {
   const photos = Array.from({ length: 10 }, (_, i) => i + 1);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-10">
@@ -21,7 +23,11 @@ export default function GalleryPage() {
       <p className="text-muted-foreground mb-8">A collection of our favorite moments.</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         {photos.map((id) => (
-          <Link key={id} href={`/photo/${id}`} scroll={false}>
+          <button
+            key={id}
+            onClick={() => setSelectedId(id)}
+            className="text-left"
+          >
             <div
               className={[
                 "relative aspect-square overflow-hidden rounded-2xl",
@@ -35,13 +41,27 @@ export default function GalleryPage() {
                 alt={`Photo ${id}`}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                preload={id <= 3}
+                priority={id <= 3}
                 className="object-cover"
               />
             </div>
-          </Link>
+          </button>
         ))}
       </div>
+
+      {selectedId !== null && (
+        <PictureModal onClose={() => setSelectedId(null)}>
+          <div className="relative w-full h-[70vh]">
+            <Image
+              src={`/images/${selectedId}.jpg`}
+              alt={`Photo ${selectedId}`}
+              fill
+              sizes="(max-width: 896px) 100vw, 896px"
+              className="object-contain"
+            />
+          </div>
+        </PictureModal>
+      )}
     </main>
   );
 }
