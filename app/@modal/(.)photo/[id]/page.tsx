@@ -1,17 +1,10 @@
 // app/@modal/(.)photo/[id]/page.tsx
 import PictureModal from "@/app/components/pictureModal/page";
 import Image from "next/image";
+import { use } from "react";
 
-export function generateStaticParams() {
-  return [
-    { id: '1' },
-    { id: '2' },
-    { id: '3' },
-  ]
-}
-
-export default async function PhotoModalPage({ params }: { params: { id: string } }) {
-  const { id } = await params;
+export default async function PhotoModalPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
   
   return (
     <PictureModal>
