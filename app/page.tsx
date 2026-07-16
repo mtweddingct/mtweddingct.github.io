@@ -53,7 +53,7 @@ export default function GalleryPage() {
         <PictureModal onClose={() => setSelectedId(null)}>
           <div className="relative w-full h-[70vh]">
             <Image
-              src={`/images/${selectedId}.jpg`}
+              src={`/images/_${selectedId}.jpg`}
               alt={`Photo ${selectedId}`}
               fill
               sizes="(max-width: 896px) 100vw, 896px"
