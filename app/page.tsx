@@ -14,7 +14,7 @@ const PASTEL_RINGS = [
 ];
 
 export default function GalleryPage() {
-  const photos = Array.from({ length: 10 }, (_, i) => i + 1);
+  const photos = Array.from({ length: 151 }, (_, i) => i + 1);
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
   return (
