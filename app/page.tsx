@@ -37,7 +37,7 @@ export default function GalleryPage() {
               ].join(" ")}
             >
               <Image
-                src={`/images/${id}.jpg`}
+                src={`/images/_${id}.jpg`}
                 alt={`Photo ${id}`}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
