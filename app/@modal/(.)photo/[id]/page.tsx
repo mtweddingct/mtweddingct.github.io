@@ -11,13 +11,12 @@ export default async function PhotoModalPage({ params }: { params: Promise<{ id:
   const { id } = use(params)
   
   return (
-    <PictureModal>
-      <div className="relative w-full h-[70vh]">
+    <PictureModal onClose={() => {}}>
+      <div className="relative w-full">
         <Image
           src={`/images/_${id}.jpg`}
           alt={`Photo ${id}`}
           fill
-          sizes="(max-width: 896px) 100vw, 896px"
           preload
           className="object-contain"
         />
